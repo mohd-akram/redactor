@@ -21,18 +21,14 @@ async function main() {
     const selector = '.userContent p';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
-    const feed = document.querySelector('#contentArea') as HTMLElement;
-    if (feed)
-      redactor.observe(feed, selector);
+    redactor.observe(document.body, selector);
   }
 
   else if (hostname.endsWith('twitter.com')) {
     const selector = '.tweet-text';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
-    const timeline = document.querySelector('#timeline') as HTMLElement;
-    if (timeline)
-      redactor.observe(timeline, selector);
+    redactor.observe(document.body, selector);
   }
 
   else if (hostname.endsWith('reddit.com')) {
@@ -41,8 +37,7 @@ async function main() {
     const selector = 'a[data-click-id=body] h2';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
-    if (elements.length)
-      redactor.observe(document.body, selector);
+    redactor.observe(document.body, selector);
   }
 }
 

@@ -38,9 +38,9 @@ class Redactor {
   }
 
   observe(element: HTMLElement, selector: string) {
-    const observer = new MutationObserver(() => {
-      this.redact(document.querySelectorAll(selector));
-    });
+    const observer = new MutationObserver(() =>
+      this.redact(document.querySelectorAll(selector))
+    );
     observer.observe(element, { childList: true, subtree: true });
   }
 }
