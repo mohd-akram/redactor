@@ -1,0 +1,47 @@
+body {
+  padding: 2px;
+}
+
+.conditions, .conditions ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.conditions > li + li {
+  margin-top: 10px;
+}
+
+ul.condition {
+  padding: 10px;
+  border: thin solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.condition::before {
+  content: 'Contains';
+}
+
+.wordlist::after {
+  content: '\A and';
+  white-space: pre;
+  font-style: italic;
+}
+
+.wordlist li {
+  display: inline;
+}
+
+.wordlist li + li::before {
+  content: 'or';
+  margin-left: 4px;
+  margin-right: 4px;
+  font-style: italic;
+}
+
+.wordlist .word {
+  width: 10ch;
+}
+
+.add-condition {
+  margin-top: 1em;
+}
