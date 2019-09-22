@@ -2,6 +2,20 @@ function escapeRegex(s: string) {
   return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
+function makeInline(element: HTMLElement) {
+  if (element.style.display == 'inline')
+    return;
+  element.style.display = 'inline';
+  const div = document.createElement('div');
+  // Need to insert the element first to ensure marginTop is updated
+  element.parentNode.insertBefore(div, element);
+  const marginTop = window.getComputedStyle(element).marginTop;
+  if (parseFloat(marginTop))
+    div.style.height = marginTop;
+  else
+    div.remove();
+}
+
 export type Condition = string[][];
 
 class Redactor {
@@ -23,16 +37,17 @@ class Redactor {
     ).find(Boolean);
   }
 
-  redact(elements: HTMLElement[] | NodeListOf<any>) {
-    for (const element of elements) {
+  redact(elements: HTMLElement[] | NodeListOf<Element>) {
+    for (const element of elements as NodeListOf<HTMLElement>) {
       if (element.classList.contains(this.className))
         continue;
-      if (this.match(element.innerText)) {
-        const style = window.getComputedStyle(element, null);
-        const color = style.getPropertyValue('color');
+      if (this.match(element.textContent)) {
+        const color = window.getComputedStyle(element).color;
         element.style.backgroundColor = color;
-        element.style.display = 'inline';
         element.classList.add(this.className);
+        makeInline(element);
+        for (const p of element.querySelectorAll('p'))
+          makeInline(p);
         if (window.getComputedStyle(element.parentElement).display == 'flex')
           element.parentElement.style.display = 'block';
       }

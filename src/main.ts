@@ -18,7 +18,7 @@ async function main() {
   const redactor = new Redactor(conditions, className);
 
   if (hostname.endsWith('facebook.com')) {
-    const selector = '.userContent p';
+    const selector = '.userContent';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
     redactor.observe(document.body, selector);
