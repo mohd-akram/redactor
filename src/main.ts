@@ -34,7 +34,7 @@ async function main() {
   else if (hostname.endsWith('reddit.com')) {
     redactor.redact(document.querySelectorAll('.link a.title'));
     // New reddit
-    const selector = 'a[data-click-id=body] h2';
+    const selector = 'a[data-click-id=body] h3';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
     redactor.observe(document.body, selector);
