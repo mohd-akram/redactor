@@ -33,6 +33,8 @@ class Redactor {
         element.style.backgroundColor = color;
         element.style.display = 'inline';
         element.classList.add(this.className);
+        if (window.getComputedStyle(element.parentElement).display == 'flex')
+          element.parentElement.style.display = 'block';
       }
     }
   }

@@ -25,7 +25,7 @@ async function main() {
   }
 
   else if (hostname.endsWith('twitter.com')) {
-    const selector = '.tweet-text';
+    const selector = 'article [lang], .tweet-text';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
     redactor.observe(document.body, selector);
