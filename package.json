@@ -8,7 +8,8 @@
     "build": "rollup -c && npm run polyfill && cp -r src/web-extension dist",
     "start": "npm run build && web-ext -s dist/web-extension run & rollup -cw",
     "package": "npm run clean && npm run build && npm run zip",
-    "zip": "web-ext -a dist -s dist/web-extension build -o"
+    "zip": "web-ext -a dist -s dist/web-extension build -o",
+    "version": "echo '/\"version\"/ya v | n | /\"version\"/pu v | -1d | x' | ex package.json src/web-extension/manifest.json && git add src/web-extension/manifest.json"
   },
   "repository": {
     "type": "git",
