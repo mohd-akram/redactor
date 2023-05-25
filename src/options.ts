@@ -1,4 +1,4 @@
-import { Condition } from './redactor';
+import { Condition } from './redactor.js';
 
 const addToList = (list: HTMLUListElement, item: HTMLElement) => {
   const listItem = document.createElement('li');

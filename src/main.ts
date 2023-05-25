@@ -1,4 +1,4 @@
-import Redactor, { Condition } from './redactor';
+import Redactor, { Condition } from './redactor.js';
 
 async function main() {
   const conditions =
