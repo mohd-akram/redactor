@@ -22,9 +22,9 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.facebook.com/*",
         "*://*.twitter.com/*",
-        "*://*.reddit.com/*"
+        "*://*.reddit.com/*",
+        "*://*.news.ycombinator.com/*"
       ],
       "js": [
         "browser-polyfill.js",

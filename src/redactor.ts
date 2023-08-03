@@ -39,11 +39,11 @@ class Redactor {
 
   redact(elements: HTMLElement[] | NodeListOf<Element>) {
     for (const element of elements as NodeListOf<HTMLElement>) {
-      if (element.classList.contains(this.className))
-        continue;
       if (this.match(element.textContent)) {
         const color = window.getComputedStyle(element).color;
         element.style.backgroundColor = color;
+        if (element.classList.contains(this.className))
+          continue;
         element.classList.add(this.className);
         makeInline(element);
         for (const p of element.querySelectorAll('p'))

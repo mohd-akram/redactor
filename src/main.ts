@@ -17,14 +17,7 @@ async function main() {
 
   const redactor = new Redactor(conditions, className);
 
-  if (hostname.endsWith('facebook.com')) {
-    const selector = '.userContent';
-    const elements = document.querySelectorAll(selector);
-    redactor.redact(elements);
-    redactor.observe(document.body, selector);
-  }
-
-  else if (hostname.endsWith('twitter.com')) {
+  if (hostname.endsWith('twitter.com')) {
     const selector = 'article [lang], .tweet-text';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
@@ -33,8 +26,15 @@ async function main() {
 
   else if (hostname.endsWith('reddit.com')) {
     redactor.redact(document.querySelectorAll('.link a.title'));
-    // New reddit
-    const selector = 'a[data-click-id=body] h3';
+    // New reddit, newer reddit
+    const selector = 'a[data-click-id=body] h3, shreddit-post [slot=title]';
+    const elements = document.querySelectorAll(selector);
+    redactor.redact(elements);
+    redactor.observe(document.body, selector);
+  }
+
+  else if (hostname.endsWith('news.ycombinator.com')) {
+    const selector = '.titleline a';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
     redactor.observe(document.body, selector);
