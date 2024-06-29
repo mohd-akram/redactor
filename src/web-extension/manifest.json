@@ -22,7 +22,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.twitter.com/*",
+        "*://*.x.com/*",
         "*://*.reddit.com/*",
         "*://*.news.ycombinator.com/*"
       ],
