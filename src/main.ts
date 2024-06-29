@@ -17,7 +17,7 @@ async function main() {
 
   const redactor = new Redactor(conditions, className);
 
-  if (hostname.endsWith('twitter.com')) {
+  if (hostname.endsWith('x.com')) {
     const selector = 'article [lang], .tweet-text';
     const elements = document.querySelectorAll(selector);
     redactor.redact(elements);
