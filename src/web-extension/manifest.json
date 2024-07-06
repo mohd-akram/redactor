@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Redactor",
   "version": "1.1.1",
   "description": "Redact social media posts that match word filters.",
@@ -8,13 +8,12 @@
   },
   "options_ui": {
     "page": "options.html",
-    "browser_style": true,
-    "chrome_style": true
+    "browser_style": true
   },
   "permissions": [
     "storage"
   ],
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "redactor@akr.am"
     }
